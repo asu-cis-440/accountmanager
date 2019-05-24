@@ -37,7 +37,7 @@ namespace accountmanager
 			//our connection string comes from our web.config file like we talked about earlier
 			string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
 			//here's our query.  A basic select with nothing fancy.  Note the parameters that begin with @
-			string sqlSelect = "SELECT id FROM account WHERE userid=@idValue and pass=@passValue";
+			string sqlSelect = "SELECT id FROM accounts WHERE userid=@idValue and pass=@passValue";
 
 			//set up our connection object to be ready to use our connection string
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
@@ -84,7 +84,7 @@ namespace accountmanager
 			string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
 			//the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
 			//does is tell mySql server to return the primary key of the last inserted row.
-			string sqlSelect = "insert into account (userid, pass, firstname, lastname, email) " +
+			string sqlSelect = "insert into accounts (userid, pass, firstname, lastname, email) " +
 				"values(@idValue, @passValue, @fnameValue, @lnameValue, @emailValue); SELECT LAST_INSERT_ID();";
 
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
@@ -130,7 +130,7 @@ namespace accountmanager
 			DataTable sqlDt = new DataTable("accounts");
 
 			string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
-			string sqlSelect = "select id, userid, pass, firstname, lastname, email from account where active=1 order by lastname";
+			string sqlSelect = "select id, userid, pass, firstname, lastname, email from accounts where active=1 order by lastname";
 			
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
 			MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
@@ -166,7 +166,7 @@ namespace accountmanager
 		{
 			string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
 			//this is a simple update, with parameters to pass in values
-			string sqlSelect = "update account set userid=@uidValue, pass=@passValue, firstname=@fnameValue, lastname=@lnameValue, " +
+			string sqlSelect = "update accounts set userid=@uidValue, pass=@passValue, firstname=@fnameValue, lastname=@lnameValue, " +
 				"email=@emailValue where id=@idValue";
 
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
@@ -201,7 +201,7 @@ namespace accountmanager
 
 			string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
 			//requests just have active set to 0
-			string sqlSelect = "select id, userid, pass, firstname, lastname, email from account where active=0 order by lastname";
+			string sqlSelect = "select id, userid, pass, firstname, lastname, email from accounts where active=0 order by lastname";
 
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
 			MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
@@ -230,7 +230,7 @@ namespace accountmanager
 		{
 			string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
 			//this is a simple update, with parameters to pass in values
-			string sqlSelect = "delete from account where id=@idValue";
+			string sqlSelect = "delete from accounts where id=@idValue";
 
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
 			MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
@@ -254,7 +254,7 @@ namespace accountmanager
 		{
 			string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
 			//this is a simple update, with parameters to pass in values
-			string sqlSelect = "update account set active=1 where id=@idValue";
+			string sqlSelect = "update accounts set active=1 where id=@idValue";
 
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
 			MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
@@ -272,12 +272,12 @@ namespace accountmanager
 			sqlConnection.Close();
 		}
 
-		//EXAMPLE OF AN UPDATE QUERY
+		//EXAMPLE OF AN DELETE QUERY
 		[WebMethod]
 		public void RejectAccount(string id)
 		{
 			string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
-			string sqlSelect = "delete from account where id=@idValue";
+			string sqlSelect = "delete from accounts where id=@idValue";
 
 			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
 			MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
