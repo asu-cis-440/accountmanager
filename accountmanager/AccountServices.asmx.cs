@@ -29,7 +29,7 @@ namespace accountmanager
 			//here we are grabbing that connection string from our web.config file
 			string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
 			//here's our query.  A basic select with nothing fancy.
-			string sqlSelect = "SELECT * from account";
+			string sqlSelect = "SELECT * from accounts";
 
 
 
