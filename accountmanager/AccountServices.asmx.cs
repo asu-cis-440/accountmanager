@@ -16,7 +16,9 @@ namespace accountmanager
     public class Account
     {
         public string Username { get; set; }
+        public string Phone { get; set; }
         public string Password { get; set; }
+        public string Photo { get; set; }
     }
 
 	/// <summary>
@@ -58,7 +60,7 @@ namespace accountmanager
 		}
 
         [WebMethod(EnableSession = true)]
-        public string CreateAccount(string username,string password)
+        public string CreateAccount(string username,string password,string phone,string photo)
         {
             /*
             string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
@@ -85,7 +87,9 @@ namespace accountmanager
             var AccountRequest = new Account
             {
                 Username = username,
+                Phone = phone,
                 Password = password,
+                Photo = photo
             };
 
             var serializer = new JavaScriptSerializer();
