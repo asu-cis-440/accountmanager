@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Create Account</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="CreateAccount.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            padding: 100px;
+        }
+
+        #title {
+            text-align: center;
+            margin-bottom: 55px;
+            border: 2px solid whitesmoke;
+            background-color: whitesmoke;
+            padding: 10px;
+        }
+
+        input {
+            width: 340px;
+            margin-bottom: 10px;
+            height: 35px;
+            padding-left: 10px;
+        }
+
+        .btn {
+            display: inline;
+            width: 172px;
+            background-color: lightgrey;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: darkblue;
+        }
+
+        p {
+            margin: 20px;
+            color: gray;
+        }
+
+        .top-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid whitesmoke;
+            background-color: whitesmoke;
+            border-radius: 10px;
+        }
+
+        .inputdiv {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .acc-wrapper {
+            border: 1px solid gray;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        hr {
+            border-top: 1px solid cyan;
+            margin-right: 20px;
+            margin-left: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .accountimg {
+            height: 110px;
+            border: 1px solid grey;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-container">
+        <div style="margin-right: 30px;">
+            <img src="../images/img.PNG" alt="Image">
+        </div>
+        <div>
+            <h1>Findr</h1>
+            <h5>Powered by you, for you</h5>
+        </div>
+    </div>
+    <div class="acc-wrapper">
+        <p>Create an Account</p>
+        <hr>
+        <div style="text-align:center;margin-top: 20px;">
+            <div class="inputdiv">
+                <div style="margin-top: 12px;">
+                    <form>
+                        <input type="text" id="username" placeholder="Enter  Username" /> <br>
+                        <input type="password" id="password" placeholder="Enter Password" />
+                    </form>
+                </div>
+                <div>
+                    <a href="javascript:void()" onclick="openDialog()">
+                      <img id="imageselector" style="cursor:pointer;" class="accountimg" src="../images/person.png" alt="Account Image">
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div style="text-align: center;">
+                <button class="btn" onclick="createAccount('true')">Create Account & Add Pets</button>
+                <button class="btn" onclick="createAccount('false')">Create Account & Skip Pets</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
