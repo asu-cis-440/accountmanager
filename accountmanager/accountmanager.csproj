@@ -91,13 +91,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AccountServices.asmx" />
+    <Content Include="CreateAccount.html" />
+    <Content Include="CreateAccount.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountServices.asmx.cs">
       <DependentUpon>AccountServices.asmx</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Global.asax.cs">
@@ -117,6 +118,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
+    <Folder Include="images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

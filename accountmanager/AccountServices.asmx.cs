@@ -9,9 +9,18 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 //and we need this to manipulate data from a db
 using System.Data;
+using System.Web.Script.Serialization;
 
 namespace accountmanager
 {
+    public class Account
+    {
+        public string Username { get; set; }
+        public string Phone { get; set; }
+        public string Password { get; set; }
+        public string Photo { get; set; }
+    }
+
 	/// <summary>
 	/// Summary description for AccountServices
 	/// </summary>
@@ -23,7 +32,7 @@ namespace accountmanager
 	public class AccountServices : System.Web.Services.WebService
 	{
 
-		[WebMethod]
+		[WebMethod(EnableSession = true)]
 		public int NumberOfAccounts()
 		{
 			//here we are grabbing that connection string from our web.config file
@@ -49,5 +58,45 @@ namespace accountmanager
 			//return the number of rows we have, that's how many accounts are in the system!
 			return sqlDt.Rows.Count;
 		}
+
+        [WebMethod(EnableSession = true)]
+        public string CreateAccount(string username,string password,string phone,string photo)
+        {
+            /*
+            string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+            MySqlConnection conn = new MySqlConnection(sqlConnectString);
+            string query = "insert INTO accounts(username,password) VALUES (@usernameValue,@passwordValue)";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            MySqlDataReader reader;
+            cmd.Parameters.AddWithValue("@usernameValue", HttpUtility.UrlDecode(username));
+            cmd.Parameters.AddWithValue("@passwordValue", HttpUtility.UrlDecode(password));
+            try
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                conn.Close();
+                return "success";
+            }
+            catch (Exception e)
+            {
+                conn.Close();
+                return "Failed";
+            }
+            */
+
+            var AccountRequest = new Account
+            {
+                Username = username,
+                Phone = phone,
+                Password = password,
+                Photo = photo
+            };
+
+            var serializer = new JavaScriptSerializer();
+            var result = serializer.Serialize(AccountRequest);
+
+            return result;
+
+        }
 	}
 }
